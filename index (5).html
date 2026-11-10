@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הורות בתנועה — ליאור מזרחי-ליבוביץ'</title>
+<meta name="description" content="הורות בתנועה — ליאור מזרחי-ליבוביץ', מדריכת הורים ומנחת קבוצות בגישה האדלריאנית.">
+<meta name="theme-color" content="#f5ede0">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdf8f2;
+  --bg: #f5ede0;
+  --sage: #7a9e7e;
+  --sage-light: #a8c5ac;
+  --sage-dim: rgba(122,158,126,0.12);
+  --rust: #c4956a;
+  --rust-dim: rgba(196,149,106,0.14);
+  --ink: #2e2418;
+  --ink-mid: #5d4f43;
+  --ink-light: #6b5c4d;
+  --sage-dark: #4a7050;
+  --rust-dark: #8a5a30;
+  --border: rgba(46,36,24,0.1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  line-height: 1.9;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,237,224,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Amatic SC', cursive;
+  font-size: 26px; font-weight: 700;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 400;
+  color: var(--ink-mid); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage-dark); text-decoration: underline; }
+.nav-cta {
+  background: var(--sage-dark); color: #fff !important;
+  padding: 8px 20px; border-radius: 100px; font-weight: 500 !important;
+}
+.nav-cta:hover { background: #3d6043; color: #fff !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 110px 28px 70px;
+  position: relative; z-index: 1;
+  overflow: hidden;
+}
+.ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(122,158,126,0.22);
+  pointer-events: none;
+}
+.ring.a { width: 520px; height: 520px; top: -140px; left: -160px; }
+.ring.b { width: 340px; height: 340px; bottom: -90px; right: -80px; border-color: rgba(196,149,106,0.28); }
+.ring.c { width: 180px; height: 180px; top: 38%; left: 6%; border-style: dashed; opacity: .6; }
+
+.hero-inner {
+  max-width: 760px; width: 100%;
+  text-align: center; position: relative; z-index: 1;
+}
+.hero-logo svg {
+  filter: drop-shadow(0 8px 28px rgba(196,149,106,0.2));
+  animation: float 7s ease-in-out infinite;
+}
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.hero-brand {
+  font-family: 'Amatic SC', cursive;
+  font-size: clamp(3.6rem, 11vw, 6.4rem);
+  font-weight: 700; line-height: 1;
+  color: var(--ink); margin-top: 10px;
+}
+.hero-name {
+  font-family: 'Amatic SC', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  color: var(--rust-dark); margin-top: 6px; letter-spacing: 0.02em;
+}
+.hero-role {
+  font-size: 0.95rem; color: var(--ink-mid);
+  letter-spacing: 0.06em; margin-top: 10px;
+}
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+.btn-primary {
+  background: var(--sage-dark); color: #fff;
+  padding: 14px 30px; border-radius: 100px;
+  text-decoration: none; font-size: 0.92rem; font-weight: 500;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: #3d6043; transform: translateY(-1px); }
+.btn-secondary {
+  border: 1.5px solid rgba(46,36,24,0.35); color: var(--ink-mid);
+  padding: 14px 30px; border-radius: 100px;
+  text-decoration: none; font-size: 0.92rem;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-secondary:hover { border-color: var(--sage-dark); color: var(--sage-dark); transform: translateY(-1px); }
+
+/* SECTIONS */
+section { position: relative; z-index: 1; padding: 90px 28px; }
+.wrap { max-width: 680px; margin: 0 auto; }
+.alt { background: var(--cream); }
+
+.prose p {
+  font-size: 1.08rem; color: var(--ink-mid);
+  margin-bottom: 1.1em;
+}
+.prose p.lead {
+  font-size: 1.25rem; color: var(--ink); font-weight: 400;
+}
+.prose p.soft { color: var(--ink-light); font-size: 1.02rem; }
+.prose p.turn {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2.1rem; font-weight: 700; line-height: 1.3;
+  color: var(--sage-dark); margin: 1.4em 0 1.2em;
+}
+
+/* movement triplet */
+.motion {
+  margin: 56px auto; max-width: 520px;
+  display: flex; flex-direction: column; gap: 6px;
+  text-align: center; position: relative;
+}
+.motion span {
+  font-family: 'Amatic SC', cursive;
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+  font-weight: 700; line-height: 1.15; color: var(--ink);
+}
+.motion span:nth-child(2) { color: var(--rust-dark); }
+.motion span:nth-child(3) { color: var(--sage-dark); }
+.motion::before, .motion::after {
+  content: ''; width: 56px; height: 1px; background: var(--rust);
+  opacity: .5; margin: 0 auto;
+}
+.motion::before { margin-bottom: 14px; }
+.motion::after { margin-top: 14px; }
+
+/* pencil sketch: wider than the text column, dissolves into the page */
+.sketch { max-width: 960px; width: 100%; margin: 0 auto 48px; }
+.sketch img { display: block; width: 100%; height: auto; }
+
+/* highlight card: the heart of the invitation */
+.invite {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 36px 32px;
+  margin: 28px 0;
+}
+.invite p { margin-bottom: .9em; }
+.invite p:last-child { margin-bottom: 0; }
+
+/* ABOUT */
+.about-head { text-align: center; margin-bottom: 38px; }
+.photo {
+  width: 210px; height: 210px; border-radius: 50%;
+  margin: 0 auto 26px; position: relative;
+  border: 1.5px solid var(--rust);
+  padding: 8px;
+}
+.photo-inner {
+  width: 100%; height: 100%; border-radius: 50%;
+  background: var(--rust-dim); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hello {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3rem; font-weight: 700; color: var(--ink); line-height: 1;
+}
+.about-name { font-size: 1.15rem; color: var(--ink); font-weight: 400; margin-top: 10px; }
+.about-creds { color: var(--sage-dark); font-weight: 500; font-size: .98rem; }
+.about-creds-2 { color: var(--ink-mid); font-size: .98rem; }
+
+/* CTA */
+.cta { text-align: center; }
+.cta-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: clamp(2.4rem, 7vw, 3.6rem); font-weight: 700; line-height: 1.1;
+  color: var(--ink);
+}
+.cta-sub { font-size: 1.1rem; color: var(--ink-mid); margin-top: 8px; }
+.contact-card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 24px; padding: 14px 28px; margin-top: 34px; text-align: right;
+}
+.contact-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.contact-row:last-child { border-bottom: none; }
+.contact-icon {
+  width: 40px; height: 40px; background: var(--sage-dim);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-label { font-size: .72rem; color: var(--ink-light); letter-spacing: .08em; display: block; line-height: 1.4; }
+.contact-value { font-size: .98rem; color: var(--ink); font-weight: 400; text-decoration: none; display: inline-block; }
+a.contact-value:hover { color: var(--sage-dark); text-decoration: underline; }
+.cta-btns { margin-top: 30px; }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 26px 32px; text-align: center;
+  font-size: .85rem; color: var(--ink-light);
+  position: relative; z-index: 1;
+}
+
+.fade-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.fade-up.visible { opacity: 1; transform: none; }
+/* ACCESSIBILITY */
+.skip-link {
+  position: absolute; top: -60px; right: 12px; z-index: 200;
+  background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 10px;
+  text-decoration: none; font-size: .95rem;
+}
+.skip-link:focus { top: 12px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; margin: -1px; padding: 0; border: 0;
+}
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+.btn-primary:focus-visible, .nav-cta:focus-visible { outline-color: var(--ink); box-shadow: 0 0 0 6px #fff; }
+
+/* CONTACT FORM */
+.form-card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 24px; padding: 30px 28px; margin-top: 34px; text-align: right;
+}
+.form-title { font-family: 'Amatic SC', cursive; font-size: 2.2rem; font-weight: 700; line-height: 1.1; color: var(--ink); }
+.form-sub { color: var(--ink-mid); font-size: 1rem; margin: 4px 0 20px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: .95rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; line-height: 1.5; }
+.field .opt { font-weight: 300; color: var(--ink-light); }
+.field input[type=text], .field input[type=tel], .field input[type=email], .field textarea {
+  width: 100%; font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink);
+  background: #fff; border: 1.5px solid rgba(46,36,24,0.45); border-radius: 12px;
+  padding: 11px 14px; line-height: 1.6;
+}
+.field textarea { min-height: 110px; resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.field input[aria-invalid=true], .field textarea[aria-invalid=true] { border-color: #a32020; }
+.field-error { color: #a32020; font-size: .9rem; margin-top: 4px; min-height: 0; }
+.consent { display: flex; gap: 12px; align-items: flex-start; margin: 6px 0 4px; }
+.consent input { width: 22px; height: 22px; margin-top: 4px; flex-shrink: 0; accent-color: var(--sage-dark); }
+.consent label { font-size: .95rem; color: var(--ink-mid); line-height: 1.7; font-weight: 400; }
+.consent a, .form-note a { color: var(--sage-dark); text-decoration: underline; }
+.form-note { font-size: .88rem; color: var(--ink-light); margin-top: 10px; line-height: 1.7; }
+.form-submit {
+  margin-top: 18px; border: 0; cursor: pointer; font: inherit; font-size: .95rem; font-weight: 500;
+  background: var(--sage-dark); color: #fff; padding: 14px 34px; border-radius: 100px;
+}
+.form-submit:hover { background: #3d6043; }
+.form-submit[disabled] { opacity: .6; cursor: default; }
+.form-status { margin-top: 14px; font-size: 1rem; font-weight: 400; line-height: 1.7; }
+.form-status.ok { color: #2f5a35; }
+.form-status.err { color: #a32020; }
+.hp { position: absolute; right: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.footer-links { margin-top: 6px; }
+.footer-links a { color: var(--ink-light); text-decoration: underline; margin: 0 10px; }
+.footer-links a:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { opacity: 1; transform: none; transition: none; }
+  .hero-logo svg { animation: none; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 0 18px; }
+  .nav-links li:not(:last-child) { display: none; }
+  section { padding: 64px 22px; }
+  .invite { padding: 28px 22px; }
+  .hero-btns { gap: 8px; }
+  .hero-btns .btn-primary, .hero-btns .btn-secondary { padding: 12px 18px; font-size: .88rem; }
+  .ring.a { width: 360px; height: 360px; left: -140px; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">דילוג לתוכן הראשי</a>
+
+<nav aria-label="ניווט ראשי">
+  <a href="#top" class="nav-brand">
+    <svg width="28" height="28" viewBox="0 0 130 130" fill="none" aria-hidden="true">
+      <circle cx="55" cy="58" r="34" stroke="#c4956a" stroke-width="3" fill="none"/>
+      <circle cx="88" cy="42" r="22" stroke="#7a9e7e" stroke-width="3" fill="none"/>
+    </svg>
+    הורות בתנועה
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">הסיפור</a></li>
+    <li><a href="#about">נעים להכיר</a></li>
+    <li><a href="#contact" class="nav-cta">צרו קשר</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="ring a" aria-hidden="true"></div><div class="ring b" aria-hidden="true"></div><div class="ring c" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-logo fade-up">
+      <svg width="190" height="190" viewBox="0 0 130 130" fill="none" aria-hidden="true">
+        <circle cx="55" cy="58" r="34" stroke="#c4956a" stroke-width="1.8"/>
+        <circle cx="88" cy="42" r="22" stroke="#7a9e7e" stroke-width="1.6"/>
+        <path d="M72,50 C72,47 74,45 76,46 C77,47 78,48 78,50 C78,48 79,47 80,46 C82,45 84,47 84,50 C84,53 80,56 78,58 C76,56 72,53 72,50Z" fill="#c4956a" fill-opacity="0.75"/>
+        <path d="M55,24 C55,24 62,18 66,12 C60,10 55,18 55,18Z" fill="#7a9e7e" fill-opacity="0.6" stroke="#7a9e7e" stroke-width="1"/>
+        <line x1="55" y1="24" x2="55" y2="34" stroke="#7a9e7e" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="55" cy="58" r="44" stroke="#c4956a" stroke-width="0.5" stroke-dasharray="3 5" opacity="0.3"/>
+        <circle cx="88" cy="42" r="30" stroke="#7a9e7e" stroke-width="0.5" stroke-dasharray="3 5" opacity="0.3"/>
+      </svg>
+    </div>
+    <h1 class="hero-brand fade-up" style="transition-delay:.1s">הורות בתנועה</h1>
+    <div class="hero-name fade-up" style="transition-delay:.2s">ליאור מזרחי-ליבוביץ'</div>
+    <div class="hero-role fade-up" style="transition-delay:.3s">מדריכת הורים ומנחת קבוצות בגישה האדלריאנית</div>
+    <div class="hero-btns fade-up" style="transition-delay:.4s">
+      <a href="#story" class="btn-primary">הסיפור</a>
+      <a href="#about" class="btn-secondary">נעים להכיר</a>
+      <a href="#contact" class="btn-secondary">צרו קשר</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- STORY -->
+<section id="story">
+  <div class="wrap prose">
+    <p class="lead fade-up">את ההורות שלנו התחלנו כולנו ללא הכשרה מתאימה. כי אין כזו.</p>
+    <p class="fade-up">התנועה הטבעית הזו, שלנו אל ההורות, יצרה שינוי משמעותי בחיים שלנו.</p>
+    <p class="fade-up">זה התחיל אז ולמעשה, ההורות מניעה אותנו ומשנה אותנו מדי יום.</p>
+    <p class="fade-up">אלו החיים.</p>
+    <p class="fade-up">והם דורשים מאיתנו להמשיך ולנוע.</p>
+    <p class="fade-up">להתאים עצמנו לסיטואציות משתנות, להתפתח, לשנות את נקודת המבט, להיות יצירתיים.</p>
+
+    <div class="motion fade-up">
+      <span>התנועה היא שינוי.</span>
+      <span>השינוי הוא חיים.</span>
+      <span>החיים הם תנועה.</span>
+    </div>
+
+  </div>
+
+  <figure class="sketch fade-up">
+    <img src="movement.webp" alt="שתי דמויות עושות גלגלון על שפת הים בשקיעה" loading="lazy" onerror="this.parentElement.style.display='none'">
+  </figure>
+
+  <div class="wrap prose">
+
+    <p class="fade-up">בחלומי, אני קמה בכל בוקר להיות האמא הכי טובה לילדים שלי. הבוקר הזה כמובן מתחיל ברגע בו אני שותה קפה בנחת, והם מתארגנים, משחקים, עצמאיים, עוזרים אחד לשני.</p>
+    <p class="fade-up">ואז אני מתעוררת למציאות. ולכריכים.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap prose">
+    <p class="fade-up">ההורות שלנו מורכבת, בין היתר, מציפיות, חלומות ורצונות שמלווים אותנו עוד מתחילת הדרך.</p>
+    <p class="fade-up">שהרי התפקיד הזה, שכאמור לא הוכשרנו אליו, מגיע אוטומטית עם המון אהבה, אבל לא תמיד עם הידע והמיומנויות המתאימות.</p>
+    <p class="fade-up">ואז אנחנו מוצאים את עצמנו בלופ שוחק של אתגרים, מאבקים, רצונות סותרים וחוסר אונים.</p>
+    <p class="fade-up">מחזיקים את הראש מעל המים ומנהלים חמ"ל של חוגיםשיעוריביתחבריםמשימות ועלה חסה לסדר.</p>
+    <p class="turn fade-up">והאמת היא, שזה לא חייב להיות ככה.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <div class="invite fade-up">
+      <p class="lead">אני מזמינה אתכם לבחור בתנועה ולצאת לדרך משותפת כדי ליצור בית באווירה טובה, עם יחסים מיטיבים, ועם ידע ותחושת מסוגלות להתמודד עם האתגרים שעוד יגיעו, כדי לצמוח יחד.</p>
+      <p>ולא פחות חשוב, כדי להצליח להנות מהתפקיד המשמעותי כל כך בחיינו. ההורות.</p>
+    </div>
+    <p class="fade-up">בתהליך ההדרכה נעבוד באופן מותאם לכם ובהתאם לצרכים שלכם, במרחב בטוח ונטול שיפוטיות.</p>
+    <p class="fade-up">נעבוד עם האתגרים היומיומיים שתביאו ובעיניים טובות, מתוך כבוד לערכים החשובים לכם, נצא לדרך ונהיה בתנועה לחיזוק הביטחון ותחושת המסוגלות בהורות שלכם, ולעיצוב הבית שבו אתם רוצים לגדל את ילדיהם.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt">
+  <div class="wrap">
+    <div class="about-head fade-up">
+      <div class="photo">
+        <div class="photo-inner">
+          <img src="lior.jpg" alt="ליאור מזרחי-ליבוביץ'" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="hello">נעים להכיר.</div>
+      <div class="about-name">אני ליאור מזרחי-ליבוביץ'.</div>
+    </div>
+    <div class="prose">
+      <p class="about-creds fade-up">מדריכת הורים ומנחת קבוצות מוסמכת מטעם מכון אדלר.</p>
+      <p class="about-creds-2 fade-up">בעלת תואר ראשון בעבודה סוציאלית ותואר ראשון במשפטים.</p>
+      <p class="soft fade-up">ומעבר לטייטלים...</p>
+      <p class="fade-up">אני נשואה לאורן ויחד אנחנו מגדלים את שלושת ילדינו (בן 11, בת 8 ובת 5).</p>
+      <p class="fade-up">אני אוהבת לרקוד ולהיות בתנועה, אוהבת את הים ולטייל בטבע, נהנית ללמוד דברים חדשים, ולראות את הילדים שלי גדלים.</p>
+      <p class="fade-up">מכירה מקרוב את המחשבות בלילה לפני השינה על מילים שהיו או שלא היו צריכות להיאמר, על כאבים שרצינו למנוע ולא הצלחנו, על סיטואציות שהיינו יכולים לנהל טוב יותר ומאמינה מכל הלב ביכולת שלנו לנוע כדי ליצור את השינוי שאנחנו מייחלים לו.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap cta">
+    <h2 class="cta-title fade-up">רוצים לצאת איתי לדרך?</h2>
+    <p class="cta-sub fade-up">אני כאן, במרחק לחיצה, מחכה לכם.</p>
+    <div class="cta-btns fade-up">
+      <a class="btn-primary" href="https://wa.me/972545705115" target="_blank" rel="noopener">שלחו לי הודעה בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
+    </div>
+    <div class="contact-card fade-up">
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22,6 L12,13 L2,6 M2,6 L2,18 L22,18 L22,6 L2,6Z" stroke="#7a9e7e" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div><span class="contact-label">אימייל</span><a class="contact-value" href="mailto:Lior@horut-betnua.co.il" dir="ltr">Lior@horut-betnua.co.il</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6,10.8 C7.8,13.4 9.8,15.8 12.2,17 L14.2,15 C14.5,14.7 14.9,14.6 15.2,14.8 C16.3,15.2 17.5,15.4 18.8,15.4 C19.5,15.4 20,15.9 20,16.6 L20,19.4 C20,20.1 19.5,20.6 18.8,20.6 C10.4,20.6 3.4,13.6 3.4,5.2 C3.4,4.5 3.9,4 4.6,4 L7.4,4 C8.1,4 8.6,4.5 8.6,5.2 C8.6,6.5 8.8,7.7 9.2,8.8 C9.4,9.1 9.3,9.5 9,9.8 L6.6,10.8Z" stroke="#7a9e7e" stroke-width="1.5"/></svg>
+        </div>
+        <div><span class="contact-label">טלפון / וואטסאפ</span><a class="contact-value" href="tel:+972545705115" dir="ltr">054-570-5115</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#7a9e7e" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#7a9e7e" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#7a9e7e"/></svg>
+        </div>
+        <div><span class="contact-label">אינסטגרם</span><a class="contact-value" href="https://instagram.com/liorimi" target="_blank" rel="noopener" dir="ltr">@liorimi<span class="sr-only"> (נפתח בחלון חדש)</span></a></div>
+      </div>
+    <div class="form-card fade-up">
+      <h3 class="form-title">אפשר גם להשאיר פרטים</h3>
+      <p class="form-sub">אחזור אליכם בהקדם.</p>
+      <form id="contact-form" novalidate>
+        <div class="hp" aria-hidden="true"><label>אל תמלאו שדה זה <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field">
+          <label for="f-name">שם מלא <span aria-hidden="true">*</span><span class="sr-only">(שדה חובה)</span></label>
+          <input type="text" id="f-name" name="name" autocomplete="name" required aria-describedby="e-name">
+          <div class="field-error" id="e-name" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="f-phone">טלפון <span aria-hidden="true">*</span><span class="sr-only">(שדה חובה)</span></label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required aria-describedby="e-phone" style="text-align:right">
+          <div class="field-error" id="e-phone" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="f-email">אימייל <span class="opt">(לא חובה)</span></label>
+          <input type="email" id="f-email" name="email" autocomplete="email" dir="ltr" aria-describedby="e-email" style="text-align:right">
+          <div class="field-error" id="e-email" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="f-msg">במה אפשר לעזור? <span class="opt">(לא חובה)</span></label>
+          <textarea id="f-msg" name="message" aria-describedby="f-note"></textarea>
+          <p class="form-note" id="f-note">מומלץ לא לכתוב כאן מידע רגיש (למשל פרטים רפואיים או פרטים מזהים על הילדים).</p>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="f-consent" name="consent" required aria-describedby="e-consent">
+          <label for="f-consent">קראתי את <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות<span class="sr-only"> (נפתח בחלון חדש)</span></a> ואני מאשר/ת לליאור לשמור את הפרטים שלי לצורך יצירת קשר. <span aria-hidden="true">*</span><span class="sr-only">(שדה חובה)</span></label>
+        </div>
+        <div class="field-error" id="e-consent" aria-live="polite"></div>
+        <button type="submit" class="form-submit" id="f-submit">שליחה</button>
+        <div class="form-status" id="f-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div>הורות בתנועה · ליאור מזרחי-ליבוביץ' · מדריכת הורים</div>
+  <div class="footer-links"><a href="privacy.html">מדיניות פרטיות</a><a href="accessibility.html">הצהרת נגישות</a></div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+/* ---- contact form (Web3Forms; paste the access key below) ---- */
+const FORM_KEY = 'PASTE_WEB3FORMS_ACCESS_KEY_HERE';
+const WA_LINK = 'https://wa.me/972545705115';
+const form = document.getElementById('contact-form');
+const statusEl = document.getElementById('f-status');
+const btn = document.getElementById('f-submit');
+const setErr = (id, msg, inputId) => {
+  document.getElementById(id).textContent = msg;
+  const inp = document.getElementById(inputId);
+  if (msg) inp.setAttribute('aria-invalid', 'true'); else inp.removeAttribute('aria-invalid');
+};
+function validate() {
+  let first = null;
+  const name = form.name.value.trim(), phone = form.phone.value.trim(), email = form.email.value.trim();
+  const digits = phone.replace(/\D/g, '');
+  const bad = [];
+  if (!name) bad.push(['e-name', 'נא למלא שם.', 'f-name']); else setErr('e-name', '', 'f-name');
+  if (digits.length < 9 || digits.length > 13) bad.push(['e-phone', 'נא למלא מספר טלפון תקין.', 'f-phone']); else setErr('e-phone', '', 'f-phone');
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) bad.push(['e-email', 'כתובת האימייל אינה תקינה.', 'f-email']); else setErr('e-email', '', 'f-email');
+  if (!form.consent.checked) bad.push(['e-consent', 'כדי לשלוח יש לאשר את מדיניות הפרטיות.', 'f-consent']); else setErr('e-consent', '', 'f-consent');
+  bad.forEach(([e, m, i]) => { setErr(e, m, i); if (!first) first = document.getElementById(i); });
+  if (first) first.focus();
+  return !first;
+}
+form.addEventListener('submit', async ev => {
+  ev.preventDefault();
+  statusEl.className = 'form-status'; statusEl.textContent = '';
+  if (!validate()) return;
+  if (form.botcheck.checked) return;
+  if (FORM_KEY.startsWith('PASTE_')) {
+    statusEl.className = 'form-status err';
+    statusEl.textContent = 'הטופס עדיין לא מחובר. אפשר ליצור קשר בוואטסאפ או בטלפון.';
+    return;
+  }
+  btn.disabled = true; btn.textContent = 'שולח...';
+  try {
+    const r = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: FORM_KEY,
+        subject: 'פנייה חדשה מאתר הורות בתנועה',
+        from_name: 'אתר הורות בתנועה',
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+        consent: 'אושרה מדיניות פרטיות ' + new Date().toISOString()
+      })
+    });
+    const j = await r.json();
+    if (!j.success) throw new Error('send failed');
+    form.reset();
+    statusEl.className = 'form-status ok';
+    statusEl.textContent = 'תודה! קיבלתי את הפרטים ואחזור אליכם בהקדם.';
+  } catch (e) {
+    statusEl.className = 'form-status err';
+    statusEl.textContent = 'משהו השתבש בשליחה. אפשר לנסות שוב, או ליצור קשר בוואטסאפ או בטלפון.';
+  } finally {
+    btn.disabled = false; btn.textContent = 'שליחה';
+  }
+});
+</script>
+</body>
+</html>
